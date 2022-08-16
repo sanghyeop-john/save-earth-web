@@ -36,8 +36,19 @@ dependencies {
 	// https://mvnrepository.com/artifact/javax.inject/javax.inject
 	implementation group: 'javax.inject', name: 'javax.inject', version: '1'
 	
+	// 이미지파일 업로드용 api
+	// 파일업로드 api
 	// https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
 	implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+	// 스트링비교 쉽게 해주는 api
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	implementation 'org.apache.commons:commons-lang3:3.4'
+	// json 쉽계 쓸수 있는 api
+	// https://mvnrepository.com/artifact/com.google.code.gson/gson
+	implementation 'com.google.code.gson:gson:2.8.5'
+	
+	
+	
 }
 
 tasks.named('test') {
