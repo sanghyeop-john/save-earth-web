@@ -2,7 +2,26 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <div id = "footer">
-	footer
+	<div id="bottom_container">
+		<div id="btm_newsletter">
+			<div id="letter_title">
+				<h2>뉴스레터 구독하기</h2>
+			</div>
+			<form action="#" onsubmit="">
+				<div id="letter_form">
+					<label for="letterEmail">이메일 주소</label>
+					<input type="text" id="email" name="email">
+					<button type="submit">구독신청</button>
+				</div>
+			</form>
+		</div>
+		<div id="btm">
+			<img src="/img/care.png" width="70px">
+			<div id="info">후원문의 savetheearth@seukorea.or.kr &nbsp;기업문의 partnership@seukorea.or.kr  &nbsp;기타문의 info@seukorea.or.kr</div>
+			<p id="copy">&copy;SaveTheEarth</p>
+		</div>
+	</div>
+	
 </div>
 </body>
 </html>

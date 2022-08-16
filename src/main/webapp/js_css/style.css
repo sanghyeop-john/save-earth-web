@@ -8,6 +8,10 @@ body{
     background: #fff;
     color : #222;
 }
+a:link, a:visited, a:hover{
+	text-decoration : none;
+	color : #333;
+}
 
 header {
 	width: 100%;
@@ -17,31 +21,41 @@ header {
     left: 0;
     top: 0;
     z-index: 100;
-    overflow : auto;
+    overflow:hidden;
 }
-
-header ul {
+#top_menu{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+/*header ul {
 	width : 100%;
 	margin: 0;
 	padding: 0;
 	list-style: none;
 	overflow : auto;
-}
-.logo {
+}*/
+#logo_img{
 	display : flex;
-	color : #fff;
+	width:100%;
+	height:78px;
 }
 #top_container{
 	display : flex;
+	justify-content:space-between;
+	margin: 0 auto;
+    width: calc(100% - 40px);
+    max-width: 1480px;
+    overflow:hidden;
 }
 #top_left{
 	display : flex;
 }
-.top_menu{
+#top_menu{
 	display : flex;
 }
-#top_right{
-	display : flex;
+#top_menu>li:hover>a{
+	color:#e98300;
 }
 #seu_header li a {
 	float: left;
@@ -52,12 +66,111 @@ header ul {
     font-weight: 700;
     color: #ffffff;
     line-height: 80px;
+    text-align: center;   
+}
+/*서브메뉴*/
+
+
+
+/*rightmenu*/
+#top_right{
+	display : flex;
+	height:80px;
+	align-items:center;
+}
+#top_right a{
+	color:white;
+}
+#top_right>a{
+	font-size: 16px;
+    color: #bbbbbb;
+    font-weight: 500;
+    padding: 0 15px;
+}
+#top_right>.dn_btn{
+	width:120px;
+	font-size: 18px;
+    height: 50px;
+    line-height: 48px;
+    color: #fff;
+    background-color: #e98300;
+    border: 1px solid #e98300;
+    display: inline-block;
     text-align: center;
-    padding : 0 20px;
-    font-size : 19px;
+    padding: 0 10px;
 }
 
-a:link, a:visited, a:hover{
-	text-decoration : none;
-	color : #333;
+/*메인컨텐츠*/
+#recent_news h2{
+	font-size: 58px;
+    line-height: 54px;
+    font-weight: 700;
+    padding-bottom: 34px;
+    position: relative;
+    text-align:center;
+}
+#banner{
+	
+}
+
+/*footer*/
+#footer{
+	padding: 60px 0 0;
+    border-top: 1px solid #ededed;
+}
+#bottom_container{
+	margin: 0 auto;
+    width: calc(100% - 40px);
+    max-width: 1480px;
+}
+#letter_title>h2{
+	font-size: 20px;
+    line-height: 19px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+#btm_newsletter{
+	margin-bottom:40px;
+}
+#letter_form>label{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 15px;
+    margin-bottom: 16px;
+    margin-right:15px;
+}
+#letter_form>input{
+	width: 30%;
+    height: 45px;
+    line-height: 45px;
+    background-color: #e5e5e5;
+    border: 0;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #222;
+}
+#letter_form>button{
+	width:10%;
+	font-size: 15px;
+    height: 45px;
+    line-height: 40px;
+    color: #fff;
+    background-color: #222222;
+    border: 1px solid #222222;
+}
+#btm{
+	padding: 30px 0 0;
+    border-top: 3px solid black;
+}
+#btm #info{
+	position:relative;
+	top:-47px;
+	left:100px;
+	font-size:13px;
+}
+#btm #copy{
+	position:relative;
+	top:-45px;
+	left:100px;
 }

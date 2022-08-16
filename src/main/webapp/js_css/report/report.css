@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.report_container{
+	width: 800px;
+	overflow : auto;
+}
+#report_list li{
+	float: left;
+	width: 10%;
+	border-bottom: 1px solid gray;
+}
+#report_list li:nth-child(3n+2){
+	width: 80%;
+}
