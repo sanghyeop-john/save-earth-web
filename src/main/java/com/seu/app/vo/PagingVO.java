@@ -3,7 +3,7 @@ package com.seu.app.vo;
 public class PagingVO {
 	
 	private int nowPage = 1; // 현재 page
-	private int onePageRecord = 10; // 한 page 에 출력한 record 수
+	private int onePageRecord = 9; // 한 page 에 출력한 record 수
 	private int totalRecord; // 총 record 수
 	private int totalPage; // 총 page 수 
 	private int offsetPoint; // page record 선택할 위치

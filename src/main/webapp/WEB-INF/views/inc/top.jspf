@@ -5,13 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SaveEarthUs</title>
+<title>SaveTheEarth</title>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src = "/js_css/script.js"></script>
 <link rel = "stylesheet" href = "/js_css/style.css" type = "text/css">
 <style>
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <header id = "seu_header">
@@ -19,15 +21,25 @@
 		<div id = "top_left">
 			<a href="/"><img src="/img/care.png" title="SEU" id="logo_img"/></a>
 			<ul id ="top_menu">
-				<li><a href="#">소개</a></li>
-				<li><a href="#">활동</a></li>
+				<li><a href="/inform/introduce">소개</a>
+					<!--  <ul class="inner-ul">
+						<li>기관소개</li>
+					</ul>-->
+				</li>
+				<li><a href="/content/climate">활동</a></li>
+
 				<li><a href="/news/newsList">소식</a></li>
-				<li><a href="#">자료</a></li>
-				<li><a href="#">후원</a></li>
+				<li><a href="/report/reportList?category=1">자료</a></li>
+					<!--  <li><a href="#">후원</a></li>-->
 			</ul>
 		</div>
 		<div id = "top_right">
-			<a href="#" class="top_right_menu">질문</a>
+			<c:if test = "${ManagerStatus == 'Y' }">
+				<a href = "/manager/managerForm">관리자 페이지</a>
+			</c:if>
+			<a href="/qnaboard/list" class="top_right_menu">QNA</a>
+			<a href="/faqboard/faqList" class="top_right_menu">FAQ</a>
+
 			<c:if test="${logStatus!='Y' }">
 				<a href="/member/login" class="top_right_menu">로그인</a>
 			</c:if>
@@ -35,7 +47,9 @@
 				<a href="/member/mypage">마이페이지</a>
 				<a href="/member/logout">로그아웃</a>
 			</c:if>
-			<a href="#" class="dn_btn">후원하기</a>
+			<c:if test="${logStatus=='Y' }">
+			<a href="/donate/donateForm" class="dn_btn">후원하기</a>
+			</c:if>
 		</div>
 	</div>
 </header>

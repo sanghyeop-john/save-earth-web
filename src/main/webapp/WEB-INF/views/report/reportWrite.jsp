@@ -3,11 +3,20 @@
 <script type="text/javascript" src = "/js_css/report/report_write.js"></script>
 
 <div class = "report_container">
+	<div id = "report_Write">
 	<form method = "post" action = "/report/reportWriteOk" id = "reportForm" enctype = "multipart/form-data">
-		<input type = "hidden" name = "category" value = "2">
 		<ul>
 			<li>제목</li>
 			<li><input type = "text" name = "subject" id = "subject"></li>
+			<li>카테고리</li>
+			<li>
+				<select name = "category">
+					<option value = "1">연례보고서</option>
+					<option value = "2">지구생명보고서</option>
+					<option value = "3">국문보고서</option>
+					<option value = "4">영문보고서</option>
+				</select>
+			</li>
 			<li>글내용</li>
 			<li><textarea name = "content" id = "content"></textarea></li>
 			<li>첨부파일</li>
@@ -17,4 +26,5 @@
 			<li><input type = "submit" value = "등록"></li>
 		</ul>
 	</form>
+	</div>
 </div>

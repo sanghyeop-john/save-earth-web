@@ -25,7 +25,7 @@
 		background-color:#fff;
 		width:700px;
 		height:400px;
-		overflow:auto;
+		overflow:hidden;
 		border:1px solid #ebecee;
 		border-radius:15px;
 	}
@@ -44,8 +44,8 @@
 	.info{
 		width:250px;
 		position:relative;
-		top:-180px;
-		left:300px;
+		top:-200px;
+		left:280px;
 	}
 	.info li{
 		float:left;
@@ -55,6 +55,7 @@
 		font-size:15px;
 		font-weight:bold;
 		margin-bottom:10px;
+		color:black;
 	}
 	.info li:nth-child(2n){width:70%;}
 	.link li{
@@ -63,15 +64,15 @@
 		font-weight:bold;
 		margin:10px;
 		position:relative;
-		left:-200px;
-		top:20px;
+		left:-197px;
+		top:16px;
 		
 	}
 	#editBtn input{
 		padding: 5px 10px;
 		position:relative;
-		left:132px;
-		top:-30px;
+		left:102px;
+		top:-40px;
 		font-size:15px;
 		font-weight:bold;
 		background-color:#33c24d;
@@ -96,7 +97,7 @@
 		<li><input type="text" name="email" id="email" value="${vo.email}" readonly/></li>	
 	</ul>
 	<ul class="link">
-		<li><a href="#" style="color:#444;">나의 질문 보기</a></li>
+		<li><a href="/qnaboard/list?userid=${vo.userid }" style="color:#444;">나의 질문 보기</a></li>
 		<li><a href="#" style="color:#444;">나의 후원 보기</a></li>
 	</ul>
 	<div id="editBtn"><input type="button" onclick="location.href='/member/memberEdit';" value="회원정보수정"/></div>

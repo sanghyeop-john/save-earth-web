@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seu.app.dao.ManagerDAO">
+	<select id = "managerAllSelect" resultType = "MemberVO">
+		select userid, username from manager_info
+	</select>
+	<select id = "managerSearch" resultType = "MemberVO">
+		select userid, username, userpwd from user_info
+		where userid = #{param1}
+	</select>
+	<insert id = "managerInsert">
+		insert into manager_info(userid, username, userpwd)
+		values(#{param1}, #{param2}, '1234')
+	</insert>
+	<delete id = "managerDelete">
+		delete from manager_info where userid = #{param1}
+	</delete>
+</mapper>

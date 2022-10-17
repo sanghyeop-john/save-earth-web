@@ -1,0 +1,147 @@
+@charset "UTF-8";
+ul, li{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+#manager_top{
+	width: 100%;
+	margin-bottom : 100px;
+}
+#manager_top li{
+	float: left;
+	text-align: center;
+	width : 25%;
+	text-align : center;
+	height: 70px;
+	line-height: 70px;
+	border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+}
+#manager_top li:first-child{
+	border-left: 1px solid #e5e5e5;
+}
+#manager_list li{
+	float : left;
+	text-align : center;
+	width : 50%;
+}
+#userList li{
+	float : left;
+	text-align : center;
+}
+#donation_search{
+	margin-top: 110px;
+}
+#manager_insert input[type="button"], #manager_insert input[type="submit"], #donation_search input[type="button"], #donation_search input[type="submit"]{
+	width: 18%;
+    font-size: 13px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #222222;
+    border: 1px solid #222222;
+}
+#manager_insert input[type="text"], #donation_search input[type="text"]{
+	width: 30%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #e5e5e5;
+    border: 0;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #222;
+}
+#manager_bottom{
+	display: flex;
+	flex-direction: column;
+}
+
+#manager_insert{
+	margin-left: auto;
+	margin-bottom: 20px;
+}
+#manager_list_div{
+	width: 50%;
+    margin: auto;
+}
+#manager_list li{
+	border-bottom: 1px solid #e5e5e5;
+	height: 45px;
+    line-height: 45px;
+}
+#manager_list .userid, #manager_list .username{
+	border-bottom : 1px solid #e5e5e5;
+}
+#manager_list .userid{
+	width: 20%;
+}
+#manager_list .username{
+	width: 70%;
+}
+#manager_list .blank, #manager_list .managerDelete{
+	width: 10%;
+}
+#userList li{
+	width: 50%;
+	border-bottom :  1px solid #e5e5e5;
+}
+#manager_top a{
+	text-decoration: none;
+}
+#manager_top li>a:hover, #manager_top li>a.active{
+	display: block;
+	border: 0;
+    background-color: #000;
+    color: #fff;
+}
+#user_list li{
+	text-align: center;
+	float: left;
+	width : 20%;
+	border-bottom: 1px solid #e5e5e5;
+	height: 45px;
+    line-height: 45px;
+}
+#donation li{
+	float: left;
+	width : 20%;
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
+	height: 45px;
+    line-height: 45px;
+}
+#donation_sta a{
+	text-decoration: none;
+}
+#donation_sta li{
+	float: left;
+	text-align: center;
+	width : 33%;
+	text-align : center;
+	height: 70px;
+	line-height: 70px;
+	border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+}
+#donation_sta li:first-child{
+	border-left: 1px solid #e5e5e5;
+}
+#donationbyuser li, #donationbymonth li, #donationbycategory li{
+	float:left;
+	width:50%;
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
+	height: 45px;
+    line-height: 45px;
+}
+#donation_sta li>a:hover, #donation_sta li>a.active{
+	display: block;
+	border: 0;
+    background-color: #000;
+    color: #fff;
+}
+
