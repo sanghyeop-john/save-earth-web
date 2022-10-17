@@ -9,7 +9,8 @@ public class ReportVO {
 	private int hit;
 	private String writedate;
 	private String filename_t;
-	private int category;
+	private int category = 1;
+	private String delFilename;
 	
 	public int getNo() {
 		return no;
@@ -59,6 +60,12 @@ public class ReportVO {
 	}
 	public void setCategory(int category) {
 		this.category = category;
+	}
+	public String getDelFilename() {
+		return delFilename;
+	}
+	public void setDelFilename(String delFilename) {
+		this.delFilename = delFilename;
 	}
 	
 	

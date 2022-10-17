@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.seu.app.dao.NewsDAO">
 	<select id="newsList" resultType="NewsVO">
-		select no, subject, userid, hit, date_format(writedate, '%m-%d %h:%i') writedate
+		select no, subject, userid, hit, date_format(writedate, '%m-%d %h:%i') writedate, filename1
 		from news
 		<if test="searchWord != null">
 			where ${searchKey} like '%${searchWord}%'

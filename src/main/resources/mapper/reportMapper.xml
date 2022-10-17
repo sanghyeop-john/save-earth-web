@@ -3,13 +3,41 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.seu.app.dao.ReportDAO">
-	<select id = "reportSelect" resultType = "ReportVO">
-		select no, subject, date_format(writedate, '%m-%d') writedate, filename
-		from Report
+	<select id = "reportAllSelect" resultType = "ReportVO">
+		select no, subject, date_format(writedate, '%m-%d') writedate, filename filename_t
+		from Report where category = ${category}
+		<if test = "searchWord != null">
+			and ${searchKey} like '%${searchWord}%'
+		</if>		
 		order by no desc
+		limit ${onePageRecord} offset ${offsetPoint}
 	</select>
 	<insert id = "reportInsert">
 		insert into Report(userid, subject, content, filename, category)
 		values(#{userid}, #{subject}, #{content}, #{filename_t}, ${category})
 	</insert>
+	<select id = "reportSelect" resultType = "ReportVO">
+		select no, subject, content, date_format(writedate, '%m-%d') writedate, filename filename_t, hit
+		from Report
+		where no = ${param1}
+	</select>
+	<update id = "hitUpdate">
+		update Report set hit = hit + 1 where no = ${param1}
+	</update>
+	<select id = "getFilename" resultType = "String">
+		select filename from report where no = ${param1}
+	</select>
+	<update id = "reportUpdate">
+		update report set subject = #{subject}, content = #{content}, filename = #{filename_t}, userid = #{userid}
+		where no = ${no}
+	</update>
+	<delete id = "reportDelete">
+		delete from report where no = ${param1}
+	</delete>
+	<select id = "totalRecord" resultType = "int">
+		select count(no) cnt from report where category = ${category}
+		<if test = 'searchWord != null'>
+			and ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
 </mapper>

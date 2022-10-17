@@ -2,9 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 	ul, li{
-	margin : 0;
-	padding : 0;
-	list-style-type : none;
+		margin : 0;
+		padding : 0;
+		list-style-type : none;
+	}
+	
+	.container {
+		padding: 100px;
 	}
 	.gall_list{
 		overflow:auto;
@@ -18,6 +22,9 @@
 		text-overflow:ellipsis;
 	}
 	/* page */
+	.paging{
+		box-align: center;
+	}
 	#page li{
 		float: left;
 		padding: 10px;
@@ -39,6 +46,7 @@
 		padding: 15px;
 		text-align: center;
 	}
+	
 	
 	
 </style>
@@ -63,8 +71,9 @@
 	
 	<!-- 필터 및 검색 -->
 	<div>
-		총 ${pvo.totalRecord }건
+		총 게시물  ${pvo.totalRecord }건
 	</div>
+	
 	<div>
 		<form method="get" action="/news/newsList" id="searchFrm">
 			<select name="searchKey">
@@ -86,14 +95,13 @@
 					<a href="/news/newsView?no=${vo.no }&nowPage=${pvo.nowPage}<c:if test='${pvo.searchWord!=null }'>&searchKey=${pvo.searchKey }&searchWord=${pvo.searchWord }</c:if>">
 						<div class="gall_thum_wrap">
 							<!-- <img src="/img/03.jpg" class="gall_thum"> -->
-							<img src="/news/display/${vo.fileloca }" class="gall_thum">
-							<%-- <img src="/news/display?filename1=${vo.filename1 }" class="gall_thum"> --%>
+							<img src="/js_css/upload/thumbnail/${vo.filename1 }" class="card-img-top">
 						</div>
 						<div class="gall_infos">
-							<div class="gall_no">${vo.no }</div>
-							<div class="gall_cate">${vo.subject}</div>			
+							<div class="gall_cate">제목: ${vo.subject}</div>	
+							<div class="gall_no">${vo.no }번 게시물</div>					
 							<div class="gall_date">${vo.writedate}</div>
-							<div class="gall_hit">${vo.hit}</div>
+							<div class="gall_hit">조회수: ${vo.hit}</div>
 							<div class="gall_cont">${vo.content}</div>
 						</div>
 					</a>
@@ -103,7 +111,7 @@
 	</ul>
 	
 	<!-- page 번호 -->
-	<div>
+	<div class = "paging">
 		<ul id = "page">
 			<c:if test = "${pvo.nowPage > 1 }"><!-- 이전 page가 있을 때 -->
 				<li><a href = "/news/newsList?nowPage=${pvo.nowPage-1 }<c:if test='${pvo.searchWord!=null }'>&searchKey=${pvo.searchKey }&searchWord=${pvo.searchWord }</c:if>">prev</a></li>
@@ -116,7 +124,7 @@
 					<li 
 					
 					<c:if test = "${p == pvo.nowPage }">
-						style = "background-color : #f00"; color : #fff;"
+						style = "background-color : orange"; color : #fff;"
 					</c:if>
 					
 					><a href = "/news/newsList?nowPage=${p }<c:if test='${pvo.searchWord!=null }'>&searchKey=${pvo.searchKey }&searchWord=${pvo.searchWord }</c:if>">${p }</a></li>

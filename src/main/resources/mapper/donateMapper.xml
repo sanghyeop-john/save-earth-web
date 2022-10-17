@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seu.app.dao.DonateDAO">
+
+  <insert id = "donateFormOk">
+    insert into Donation(userid, email, amount, frequency)
+    values(#{userid}, #{email}, #{amount}, 1)
+  </insert>
+	<select id = "donateAllSelect" resultType = "DonateVO">
+		select userid, ifnull(amount, 0) amount, frequency, category, date_format(donate_date, '%m-%d %h:%i') donate_date
+		from donation
+	</select>
+	<select id = "donateSum" resultType = "int">
+		select ifnull(sum(amount), 0) amount from donation
+	</select>
+	<select id = "donateSelectByUser" resultType = "DonateVO">
+		select ifnull(sum(amount), 0) amount , userid from donation group by userid order by amount desc
+	</select>
+	<select id = "donateSelectByMonth" resultType = "DonateVO">
+		select ifnull(sum(amount), 0) amount, donate_month donate_date 
+		from (select sum(amount) amount, date_format(donate_date, '%y-%m') donate_month 
+		from donation group by donate_month) a 
+		group by donate_date order by donate_date desc;
+	</select>
+	<select id = "donateSelectByCategory" resultType = "DonateVO">
+		select ifnull(sum(amount), 0) amount, category from donation group by category;
+	</select>
+	<select id = "donateSelectByUserid" resultType = "DonateVO">
+		select ifnull(sum(amount), 0) amount, userid from donation where userid = #{param1} group by userid
+	</select>
+
+</mapper>

@@ -23,7 +23,7 @@
 			filebrowserUploadUrl:  "fileupload.do"
 		});
 		
-		$("#newsFrm").submit(function(){
+		$("#newsContent").submit(function(){
 			if($("#subject").val()==""){
 				alert("제목을 입력하세요.");
 				return false;
@@ -42,14 +42,14 @@
 
 <div class="container">
 	<h1>소식 쓰기</h1>
-		<form method="post" action="/news/newsWriteOk" id="newsFrm" enctype="multipart/form-data"> <!-- 이미지 파일업로드 -->
+		<form method="post" action="/news/newsWriteOk" id="newsContent" enctype="multipart/form-data"> <!-- 이미지 파일업로드 -->
 	       <ul>
 		       	<li>뉴스제목</li>
 		       	<li><input type="text" name="subject" id="subject"></li>
 		       	<li>뉴스내용</li>
 		       	<li><textarea name="content" id="content"></textarea></li>
 		       	<li>썸네일</li>
-		       	<li><input type="file" name="filename1" id="filename1" multiple="multiple"></li>	
+		       	<li><input type="file" name="filename" id="filename1"></li>	
 		       	<br/>
 		       	<li>
 		       		<button type="submit" class="btn btn-primary whyBtn">글 작성</button>

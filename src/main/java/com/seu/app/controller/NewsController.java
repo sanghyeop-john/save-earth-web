@@ -7,8 +7,6 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,10 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.StringUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -38,6 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import com.seu.app.service.NewsService;
 import com.seu.app.vo.NewsVO;
@@ -184,38 +181,36 @@ public class NewsController {
 			e.printStackTrace();
 		}
 	}
-	
-	// display
+
+
+	// 게시글 이미지 파일전송요청
 	@GetMapping("display")
-	public ResponseEntity<Resource> display(@RequestParam("filename1") String filename1) {
-		String path = "/upload/thumbnail";
-		String folder = "";
-		Resource resource = new FileSystemResource(path + folder + filename1);
-		if(!resource.exists()) 
-			return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);
-		HttpHeaders header = new HttpHeaders();
-		Path fileloca = null;
-		try{
-			fileloca = Paths.get(path + folder + filename1);
-			header.add("Content-type", Files.probeContentType(fileloca));
-		}catch(IOException e) {
+	public ResponseEntity<byte[]> getFile(String filename1 , HttpServletRequest req, HttpServletResponse resp){
+		
+		File file = new File(req.getSession().getServletContext().getRealPath("/resources/images/thumbnail"+ "\\" + filename1));
+		
+		ResponseEntity<byte[]> result = null;
+		
+		try {
+		HttpHeaders headers = new HttpHeaders();
+	
+			headers.add("Content-Type", Files.probeContentType(file.toPath()));
+			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
+	
+		return result;
 	}
 	
 	// view
 	@GetMapping("newsView")
-	public ModelAndView newsView(@RequestParam("no") int no, PagingVO pvo) {
-		
-		// 조회수 증가
-		service.hitCount(no);
-		
+	public ModelAndView newsView(int no, PagingVO pvo) {
 		mav = new ModelAndView();
-		mav.addObject("vo", service.getNews(no));
+		service.hitCount(no);
+		mav.addObject("newsVO", service.getNews(no));
 		mav.addObject("pvo", pvo);
 		mav.setViewName("news/newsView");
-		
 		return mav;
 	}
 	

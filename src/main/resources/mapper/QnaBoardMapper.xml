@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seu.app.dao.QuestionDAO">
+	<insert id="qnaboardWriteOk">
+		insert into question(subject, content, userid, hit)
+		values(#{subject}, #{content}, #{userid}, 0)
+	</insert>
+	<select id="qnaboardList" resultType="com.seu.app.vo.QuestionVO" parameterType="String">
+		select no, subject, userid,
+		hit, date_format(writedate, '%m-%d %H:%i') writedate
+		from Question 
+		<if test="userid!=null and !userid.equals('')">
+			WHERE userid = #{userid}
+		</if>
+	</select>
+	<select id="qnaboardView" resultType="com.seu.app.vo.QuestionVO"
+		parameterType="int">
+		select no, subject,
+		content, userid, hit, writedate from
+		Question
+		where no = #{param1}
+	</select>
+	<delete id="qnaboardDel">
+		delete from Question where no = ${param1} and userid
+		= #{param2}
+	</delete>
+</mapper>
+  

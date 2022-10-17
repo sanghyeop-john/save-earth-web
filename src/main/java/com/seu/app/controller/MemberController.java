@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seu.app.service.MemberService;
+import com.seu.app.vo.ManagerVO;
 import com.seu.app.vo.MemberVO;
 
 @RestController
@@ -90,11 +91,15 @@ public class MemberController {
 	public ModelAndView loginOk(MemberVO vo, HttpSession session) {
 		mav = new ModelAndView();
 		MemberVO logVO = service.loginOk(vo);
+		ManagerVO mvo = service.managerCheck(logVO);
 		
 		if(logVO!=null) {//로그인 성공
 			session.setAttribute("logId", logVO.getUserid());
 			session.setAttribute("logName", logVO.getUsername());
 			session.setAttribute("logStatus", "Y");
+			if(mvo != null) {
+				session.setAttribute("ManagerStatus", "Y");
+			}
 			mav.setViewName("redirect:/"); //홈으로 이동
 		}else {//로그인 실패
 			mav.setViewName("redirect:login"); //로그인페이지로 이동
